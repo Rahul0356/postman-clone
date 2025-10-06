@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-export default function Home() {
+import { currentUser } from "@/modules/authentication/actions";
+import UserButton from "@/modules/authentication/components/user-button";
+export default async function Home() {
+  const user = await currentUser
   return (
   
    <div className="flex flex-col items-center justify-center">
-    <h1 className="text-3xl font-bold underline">Hello Rahul</h1>
- <Button>Hello</Button>
+  
+<UserButton user={user}/>
    </div>
   );
 }
